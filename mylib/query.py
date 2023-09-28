@@ -54,7 +54,16 @@ def create_record(
 
     # Log the query
     log_query(
-        f"INSERT INTO ServeTimesDB VALUES ({server}, {seconds_before_next_point}, {day}, {opponent}, {game_score}, {sets}, {game});"
+        f"""
+        INSERT INTO ServeTimesDB VALUES (
+            {server}, 
+            {seconds_before_next_point}, 
+            {day}, 
+            {opponent}, 
+            {game_score}, 
+            {sets}, 
+            {game});
+        """
     )
 
 
@@ -66,7 +75,12 @@ def update_record(
     c.execute(
         """
         UPDATE ServeTimesDB 
-        SET server=?, seconds_before_next_point=?, day=?, opponent=?, game_score=?, sets=?, game=?
+        SET server=?, 
+        seconds_before_next_point=?, 
+        day=?, opponent=?, 
+        game_score=?, 
+        sets=?, 
+        game=?
         WHERE id=?
         """,
         (
@@ -85,7 +99,15 @@ def update_record(
 
     # Log the query
     log_query(
-        f"UPDATE ServeTimesDB SET server={server}, seconds_before_next_point={seconds_before_next_point}, day={day}, opponent={opponent}, game_score={game_score}, sets={sets}, game={game} WHERE id={record_id};"
+        f"""UPDATE ServeTimesDB SET 
+        server={server}, 
+        seconds_before_next_point=
+        {seconds_before_next_point},
+        day={day}, opponent={opponent}, 
+        game_score={game_score}, 
+        sets={sets}, 
+        game={game} 
+        WHERE id={record_id};"""
     )
 
 

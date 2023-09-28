@@ -89,7 +89,12 @@ def test_create_record():
 def test_general_query():
     """tests general_query"""
     result = subprocess.run(
-        ["python", "main.py", "general_query", "SELECT * FROM matches"],
+        [
+            "python",
+            "main.py",
+            "general_query",
+            "SELECT * FROM ServeTimesDB WHERE server = 'John Doe'",
+        ],
         capture_output=True,
         text=True,
         check=True,
@@ -111,8 +116,8 @@ def test_read_data():
 if __name__ == "__main__":
     test_extract()
     test_transform_load()
+    test_create_record()
+    test_read_data()
     test_update_record()
     test_delete_record()
-    test_create_record()
     test_general_query()
-    test_read_data()

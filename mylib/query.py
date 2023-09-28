@@ -7,6 +7,7 @@ LOG_FILE = "query_log.md"
 
 
 def log_query(query):
+    print(query)
     with open(LOG_FILE, "a") as file:
         file.write(f"```sql\n{query}\n```\n\n")
 
@@ -54,16 +55,14 @@ def create_record(
 
     # Log the query
     log_query(
-        f"""
-        INSERT INTO ServeTimesDB VALUES (
+        f"""INSERT INTO ServeTimesDB VALUES (
             {server}, 
             {seconds_before_next_point}, 
             {day}, 
             {opponent}, 
             {game_score}, 
             {sets}, 
-            {game});
-        """
+            {game});"""
     )
 
 
@@ -127,4 +126,5 @@ def read_data():
     c = conn.cursor()
     c.execute("SELECT * FROM ServeTimesDB")
     data = c.fetchall()
+    log_query("SELECT * FROM ServeTimesDB;")
     return data

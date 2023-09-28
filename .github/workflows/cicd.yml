@@ -9,9 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [3.7, 3.8, 3.9]
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
@@ -20,9 +17,6 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: install packages
         run: make install
-      # Add a step to introduce a delay between jobs
-      - name: Wait for 15 seconds
-        run: sleep 15
       - name: lint
         run: make lint
       - name: test

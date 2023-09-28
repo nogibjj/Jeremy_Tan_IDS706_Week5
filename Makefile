@@ -32,6 +32,7 @@ generate_and_push:
 	@if [ -n "$$(git status --porcelain)" ]; then \
 		git config --local user.email "action@github.com"; \
 		git config --local user.name "GitHub Action"; \
+		git pull; \
 		git add .; \
 		git commit -m "Add SQL log"; \
 		git push; \

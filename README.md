@@ -52,7 +52,7 @@ Explanations of functions can be found [here](https://github.com/nogibjj/Jeremy_
 3. Test coce `make test`
 
 ## Simple Vizualization of Process
-![ETLQ](ad_flow.svg)
+![ETLQ](ad_flow2.svg)
 
 ## References 
 https://github.com/nogibjj/sqlite-lab

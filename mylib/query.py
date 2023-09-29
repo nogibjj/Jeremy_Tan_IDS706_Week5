@@ -7,12 +7,13 @@ LOG_FILE = "query_log.md"
 
 
 def log_query(query):
-    print(query)
+    """adds to a query markdown file"""
     with open(LOG_FILE, "a") as file:
         file.write(f"```sql\n{query}\n```\n\n")
 
 
 def general_query(query):
+    """runs a query a user inputs"""
     # Connect to the SQLite database
     conn = sqlite3.connect("ServeTimesDB.db")
 
@@ -40,6 +41,7 @@ def general_query(query):
 def create_record(
     server, seconds_before_next_point, day, opponent, game_score, sets, game
 ):
+    """create example query"""
     conn = sqlite3.connect("ServeTimesDB.db")
     c = conn.cursor()
     c.execute(
@@ -69,6 +71,7 @@ def create_record(
 def update_record(
     record_id, server, seconds_before_next_point, day, opponent, game_score, sets, game
 ):
+    """update example query"""
     conn = sqlite3.connect("ServeTimesDB.db")
     c = conn.cursor()
     c.execute(
@@ -111,6 +114,7 @@ def update_record(
 
 
 def delete_record(record_id):
+    """delete example query"""
     conn = sqlite3.connect("ServeTimesDB.db")
     c = conn.cursor()
     c.execute("DELETE FROM ServeTimesDB WHERE id=?", (record_id,))
@@ -122,6 +126,7 @@ def delete_record(record_id):
 
 
 def read_data():
+    """read data"""
     conn = sqlite3.connect("ServeTimesDB.db")
     c = conn.cursor()
     c.execute("SELECT * FROM ServeTimesDB")

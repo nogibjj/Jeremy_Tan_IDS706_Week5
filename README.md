@@ -1,38 +1,58 @@
-## SQLite Lab
+[![CI](https://github.com/nogibjj/Jeremy_Tan_IDS706_Week5/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/Jeremy_Tan_IDS706_Week5/actions/workflows/cicd.yml)
+## Jeremy_Tan_IDS706_Week5
+### File Structure
+```
+Jeremy_Tan_IDS706_Week5/
+├── .devcontainer/
+│   ├── devcontainer.json
+│   └── Dockerfile
+├── .github/
+│   └── workflows/cicd.yml
+├── .gitignore
+├── AD_flow.svg
+├── data/
+│   └── serve_times.csv
+├── Dockerfile
+├── LICENSE
+├── main.py
+├── Makefile
+├── mylib/
+│   ├── __init__.py
+│   ├── __pycache__/
+│   ├── extract.py
+│   ├── query.py
+│   └── transform_load.py
+├── query_log.md
+├── README.md
+├── requirements.txt
+├── ServeTimesDB.db
+├── setup.sh
+└── test_main.py
+```
+## Purpose of project
+The purpose of this project is to build an ETL-Query pipeline. I use FiveThirtyEight's public dataset to extract it into a local csv file, tranfrom the csv file by cleaning it, loading it into a .db file, and querying it with SQLlite. 
 
-### Lab:
+## Preparation
+1. open codespaces 
+2. wait for container to be built and virtual environment to be activated with requirements.txt installed 
+3. extract: run `make extract`
+4. transform and load: run `make transform_load`
+4. query: run `make query` or alternatively write your own query using `python main.py general_query <insert query>`
 
-* Use an AI Assistant, but use a different one then you used from a previous lab (Anthropic's Claud, Bard, Copilot, CodeWhisperer, Colab AI, etc)
-* ETL-Query:  [E] Extract a dataset from URL, [T] Transform, [L] Load into SQLite Database and [Q] Query
-For the ETL-Query lab:
-* [E] Extract a dataset from a URL like Kaggle or data.gov. JSON or CSV formats tend to work well.
-* [T] Transform the data by cleaning, filtering, enriching, etc to get it ready for analysis.
-* [L] Load the transformed data into a SQLite database table using Python's sqlite3 module.
-* [Q] Write and execute SQL queries on the SQLite database to analyze and retrieve insights from the data.
+## Sample CRUD Operations 
+Explanations of functions can be found [here](https://github.com/nogibjj/Jeremy_Tan_IDS706_Week5/blob/main/mylib/query.py)
+1. Create: `python main.py create_record 'John Doe' 40 '2023-09-05' 'Jane Doe' '30-40' 1 '0-0'`
+2. Read: `python main.py read_data`
+3. Update: `python main.py update_record 1 'John Doe' 40 '2023-09-05' 'Jane Doe' '30-40' 1 '0-0'`
+4. Delete: `python main.py delete_record 1`
 
-#### Tasks:
+## Check format and test errors 
+1. Format code `make format`
+2. Lint code `make lint`
+3. Test coce `make test`
 
-* Fork this project and get it to run
-* Make the query more useful and not a giant mess that prints to screen
-* Convert the main.py into a command-line tool that lets you run each step independantly
-* Fork this project and do the same thing for a new dataset you choose
-* Make sure your project passes lint/tests and has a built badge
-* Include an architectural diagram showing how the project works
+## Simple Vizualization of Process
+![ETLQ](AD_flow.svg)
 
-#### Reflection Questions
-
-* What challenges did you face when extracting, transforming, and loading the data? How did you overcome them?
-* What insights or new knowledge did you gain from querying the SQLite database?
-* How can SQLite and SQL help make data analysis more efficient? What are the limitations?
-* What AI assistant did you use and how did it compare to others you've tried? What are its strengths and weaknesses?
-* If you could enhance this lab, what would you add or change? What other data would be interesting to load and query?
-
-##### Challenge Exercises
-
-* Add more transformations to the data before loading it into SQLite. Ideas: join with another dataset, aggregate by categories, normalize columns.
-* Write a query to find correlated fields in the data. Print the query results nicely formatted.
-* Create a second table in the SQLite database and write a join query with the two tables.
-* Build a simple Flask web app that runs queries on demand and displays results.
-* Containerize the application using Docker so the database and queries can be portable
-
-
+## References 
+https://github.com/nogibjj/sqlite-lab

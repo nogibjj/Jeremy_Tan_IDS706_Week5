@@ -13,7 +13,7 @@ def extract(
     file_path="data/serve_times.csv",
     directory="data",
 ):
-    """ "Extract a url to a file path"""
+    """Extract a url to a file path"""
     if not os.path.exists(directory):
         os.makedirs(directory)
     with requests.get(url) as r:

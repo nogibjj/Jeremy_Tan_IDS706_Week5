@@ -9,9 +9,6 @@ import os
 # load the csv file and insert into a new sqlite3 database
 def load(dataset="data/serve_times.csv"):
     """Transforms and Loads data into the local SQLite3 database"""
-
-    # prints the full working directory and path
-    print(os.getcwd())
     payload = csv.reader(open(dataset, newline=""), delimiter=",")
     # skips the header of csv
     next(payload)

@@ -38,3 +38,12 @@ generate_and_push:
 	else \
 		echo "No changes to commit. Skipping commit and push."; \
 	fi
+
+extract:
+	python main.py extract
+
+transform_load: 
+	python main.py transform_load
+
+query:
+	python main.py general_query "SELECT * FROM ServeTimesDB WHERE server='Roger Federer';"

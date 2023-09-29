@@ -8,7 +8,7 @@ import requests
 
 def extract(
     url="""
-    https://raw.githubusercontent.com/fivethirtyeight/data/master/tennis-time/serve_times.csv
+    https://github.com/fivethirtyeight/data/blob/master/tennis-time/serve_times.csv?raw=true 
     """,
     file_path="data/serve_times.csv",
     directory="data",
